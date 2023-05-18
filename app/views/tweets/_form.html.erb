@@ -1,0 +1,26 @@
+<%= form_with(model: tweet) do |form| %>
+  <% if tweet.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(tweet.errors.count, "error") %> prohibited this tweet from being saved:</h2> 
+      <ul>
+        <% tweet.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div >
+  <% end %>
+
+  <div class=" w-70">
+  <%= form.label :user_name,style: "display: block" %>
+  <%= form.text_field :user_name, class:"form-control" %>
+  </div>
+
+  <div class=" w-70 my-2">
+    <%= form.label :Tweet, style: "display: block" %>
+    <%= form.text_area :description ,class:"form-control" %>
+  </div>
+
+  <div>
+  <%= button_to "Tweet", tweets_path, method: :post, class: "tweet-button rounded px-4" %>
+  </div>
+<% end %>

@@ -1,0 +1,28 @@
+<main class="py-4">
+        <header>
+        <%= form_tag tweets_path, method: :get, class: "compose" do %>
+          <%= text_field_tag :search, params[:search], placeholder: 'Search tweets' , class: "w-100 border-0 p-2 rounded"%>
+          <%= submit_tag 'Search', class: 'px-3 tweet-button rounded btn-blue text-white border-0' %>
+        <% end %>
+        </header>
+
+        <div class="tweets">
+            <div class="thread">
+            <% @tweets.each do |tweet| %>
+              <div class="tweet">
+              <img src="images/twitter.png">
+              <div class="body">
+               <%= link_to "Show", tweet_path(tweet), class: "btn float-end border rounded " %>
+                  <div class="title"><%= tweet.user_name %></div>
+                  <div class="message"><%= tweet.description %></div>
+              </div>
+              </div>
+            <% end %>
+            </div>
+            <div id="pagination" class="d-flex justify-content-center py-2"><%= will_paginate @tweets %></div>
+        </div>
+        <div class="d-flex justify-content-end mt-2 fixed-top me-3 ">
+<a href="/new"class="btn btn-primary btn-blue">Create new tweet</a>
+</div>
+</main>
+ 

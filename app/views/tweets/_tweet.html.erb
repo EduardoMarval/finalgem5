@@ -1,0 +1,18 @@
+<main class="py-4 mt-5">
+ <h1 class="mx-5 mt-5 my-3 text-center title-blue">Tweet from @<%= tweet.user_name %></h1>
+        <div class="tweets mb-4">
+            <div class="thread my-4">
+              <div class="tweet">
+              <img src="../images/twitter.png">
+              <div class="body">
+              <%= button_to "Delete", tweet_path(tweet), method: :delete,  class: "btn float-end border rounded text-white bg-danger " %>
+              <%= link_to "Edit", edit_tweet_path(tweet), class: "btn float-end border rounded mx-2" %>
+                  <div class="title"><%= tweet.user_name %></div>
+                  <div class="message"><%= tweet.description %></div>
+              </div>
+              </div>
+            </div>
+        </div>
+        <%= link_to "< Back to tweets", tweets_path , class:"back-btn" %>
+</main>
+
